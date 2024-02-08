@@ -61,4 +61,9 @@ $$y = \frac{L}{1 + e^{-(k(x-x_0))}} + b$$
 
 ## 結果
 
+### Micro colony
+
+![Image](figures/fit_mc_sig.png)
+
+### Planktonic
 
