@@ -12,11 +12,11 @@ ax = fig.add_subplot(111)
 max_mc1 = max(data.mc1)
 mc1 = np.array([max_mc1 - i for i in data.mc1])
 ax.scatter(np.array(data.days), mc1, label="Micro-colony1")
-# ax.scatter(np.array(data.days), np.array(data.mc2), label="Micro-colony2")
-# ax.scatter(np.array(data.days), np.array(data.mc3), label="Micro-colony3")
-# ax.scatter(np.array(data.days), np.array(data.Planktonic1), label="Planktonic1")
-# ax.scatter(np.array(data.days), np.array(data.Planktonic2), label="Planktonic2")
-# ax.scatter(np.array(data.days), np.array(data.Planktonic3), label="Planktonic3")
+ax.scatter(np.array(data.days), np.array(data.mc2), label="Micro-colony2")
+ax.scatter(np.array(data.days), np.array(data.mc3), label="Micro-colony3")
+ax.scatter(np.array(data.days), np.array(data.Planktonic1), label="Planktonic1")
+ax.scatter(np.array(data.days), np.array(data.Planktonic2), label="Planktonic2")
+ax.scatter(np.array(data.days), np.array(data.Planktonic3), label="Planktonic3")
 ax.set_xlabel("Days")
 ax.set_ylabel("Nitrate Concentration (mg-N/L)")
 ax.legend()
@@ -61,35 +61,75 @@ X_mc2, Y_mc2, days_raw_2, ncs_2, t_2, r2_2 = fit(data.days, np.array(data.mc2))
 
 X_mc3, Y_mc3, days_raw_3, ncs_3, t_3, r2_3 = fit(data.days, np.array(data.mc3))
 
+X_pl1, Y_pl1, days_raw_pl1, ncs_pl1, t_pl1, r2_pl1 = fit(
+    data.days, np.array(data.Planktonic1), 8, len(data.days) - 7
+)
+
+X_pl2, Y_pl2, days_raw_pl2, ncs_pl2, t_pl2, r2_pl2 = fit(
+    data.days, np.array(data.Planktonic2), 8, len(data.days) - 7
+)
+
+X_pl3, Y_pl3, days_raw_pl3, ncs_pl3, t_pl3, r2_pl3 = fit(
+    data.days, np.array(data.Planktonic3), 8, len(data.days) - 8
+)
 
 fig = plt.figure(figsize=(8, 5))
 ax = fig.add_subplot(111)
-ax.plot(X_mc1, Y_mc1, color="red")
-ax.plot(X_mc2, Y_mc2, color="red")
-ax.plot(X_mc3, Y_mc3, color="red")
+# ax.plot(X_mc1, Y_mc1, color="red")
+# ax.plot(X_mc2, Y_mc2, color="red")
+# ax.plot(X_mc3, Y_mc3, color="red")
+# ax.scatter(
+#     np.array(data.days),
+#     np.array(data.mc1),
+#     label=f"Micro-colony1 {round(t_1,2)} "
+#     + r"$(day^{-1})\:\:R^2=$"
+#     + f"{round(r2_1, 4)}",
+# )
+# ax.scatter(
+#     np.array(data.days),
+#     np.array(data.mc2),
+#     label=f"Micro-colony2 {round(t_2,2)} "
+#     + r"$(day^{-1})\:\:R^2=$"
+#     + f"{round(r2_2, 4)}",
+# )
+# ax.scatter(
+#     np.array(data.days),
+#     np.array(data.mc3),
+#     label=f"Micro-colony3 {round(t_3,2)} "
+#     + r"$(day^{-1})\:\:R^2=$"
+#     + f"{round(r2_3, 4)}",
+# )
+
+ax.plot(X_pl1, Y_pl1, color="red")
+ax.plot(X_pl2, Y_pl2, color="red")
+ax.plot(X_pl3, Y_pl3, color="red")
+
 ax.scatter(
     np.array(data.days),
-    np.array(data.mc1),
-    label=f"Micro-colony1 {round(t_1,2)} "
+    np.array(data.Planktonic1),
+    label=f"Planktonic1 {round(t_pl1,2)} "
     + r"$(day^{-1})\:\:R^2=$"
-    + f"{round(r2_1, 4)}",
+    + f"{round(r2_pl1, 4)}",
 )
+
 ax.scatter(
     np.array(data.days),
-    np.array(data.mc2),
-    label=f"Micro-colony2 {round(t_2,2)} "
+    np.array(data.Planktonic2),
+    label=f"Planktonic2 {round(t_pl2,2)} "
     + r"$(day^{-1})\:\:R^2=$"
-    + f"{round(r2_2, 4)}",
+    + f"{round(r2_pl2, 4)}",
 )
+
 ax.scatter(
     np.array(data.days),
-    np.array(data.mc3),
-    label=f"Micro-colony3 {round(t_3,2)} "
+    np.array(data.Planktonic3),
+    label=f"Planktonic3 {round(t_pl3,2)} "
     + r"$(day^{-1})\:\:R^2=$"
-    + f"{round(r2_3, 4)}",
+    + f"{round(r2_pl3, 4)}",
 )
+
 
 ax.set_xlabel("Days")
 ax.set_ylabel("Nitrate Concentration (mg-N/L)")
 ax.legend()
-fig.savefig("fit_mc1.png", dpi=400)
+fig.savefig("fit_pl1.png", dpi=400)
