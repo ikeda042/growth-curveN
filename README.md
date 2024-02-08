@@ -67,3 +67,6 @@ $$y = \frac{L}{1 + e^{-(k(x-x_0))}} + b$$
 
 ### Planktonic
 
+![Image](figures/fit_pl_sig.png)
+
+
