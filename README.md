@@ -1,6 +1,4 @@
-# growth-curveN
-
-# データ
+# 実験データ
 ## Microcolony 1,2,3のデータ
 
 ![Image](figures/scatter_micro_colony.png)
@@ -12,3 +10,4 @@
 
 ![Image](figures/scatter_all.png)
 
+# 増殖曲線フィッティング
