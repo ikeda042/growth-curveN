@@ -1,4 +1,5 @@
-# 実験データ
+# 亜硝酸濃度フィッティング
+
 ## Microcolony 1,2,3のデータ
 
 ![Image](figures/scatter_micro_colony.png)
